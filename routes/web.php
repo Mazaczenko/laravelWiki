@@ -40,3 +40,33 @@ Route::view(
             'name' => 'Wojtek'
         ]
     );
+Route::get('posts/{postId}/{title}', function (int $postId, string $title) {
+    var_dump($title);
+    dd($postId);
+});
+
+// Route::get('users/{login?}', function (string $login = null) {
+// Route::get('users/{login?}', function (string $login = 'Wojtaszko') {
+//     dd($login);
+// });
+
+Route::get('users/{login?}', function (string $login) {
+    dump($login);
+})->where(['login' => '[a-z0-9]+']);
+// na każdy parametr możemy nałożyć regułę, a parametry to nic innego jak wyrażenia regularne (regex)
+
+
+// named routes here
+Route::get('items', function () {
+    return 'Items';
+})->name('shop.items');
+
+Route::get('elements/{id}', function (int $id) {
+    return 'Element: ' . $id;
+})->name('shop.singleItem');
+
+Route::get('route-name-call', function () {
+    // $url = route('shop.items');
+    $url = route('shop.singleItem', ['id' => 666]);
+    dump($url);
+});
