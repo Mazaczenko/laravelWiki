@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,10 +29,16 @@ Route::patch($uri, fn() => 'patch arrow function');
 Route::delete($uri, fn() => 'delete arrow function');
 Route::options($uri, fn() => 'options arrow function');
 
+$uri2 = '/homeWork1';
+Route::get($uri2, [TestController::class, 'testGet']);
+Route::post($uri2, [TestController::class, 'testPost']);
+Route::delete($uri2, [TestController::class, 'testDelete']);
+Route::put($uri2, [TestController::class, 'testPut']);
+Route::patch($uri2, [TestController::class, 'testPatch']);
+Route::options($uri2, [TestController::class, 'testOptions']);
+
 Route::match(['get', 'post'], '/match', fn() => 'jestem getem i postem');
-
 Route::any('/all', fn() => 'wszystkie metody');
-
 Route::view(
         '/view/route/var1',
         'route.param',
@@ -40,6 +47,7 @@ Route::view(
             'name' => 'Wojtek'
         ]
     );
+
 Route::get('posts/{postId}/{title}', function (int $postId, string $title) {
     var_dump($title);
     dd($postId);
