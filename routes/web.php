@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +21,5 @@ Route::get('/', function () {
 
 Route::get('users', [UserController::class, 'list'])
     ->name('get.users');
+
+Route::get('users/{id}', [ProfileController::class, 'show']);
