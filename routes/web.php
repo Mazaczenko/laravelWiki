@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\User\ShowAddress;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +25,16 @@ Route::get('users', [UserController::class, 'list'])
     ->name('get.users');
 
 Route::get('users/{id}', [ProfileController::class, 'show']);
+
+// Single action controller
+Route::get('users/{id}/address', ShowAddress::class);
+
+Route::resource('games', GameController::class)
+    ->only([
+        'index', 'show'
+    ]);
+
+Route::resource('admin/games', GameController::class)
+    ->only([
+        'store', 'create', 'destroy'
+    ]);
