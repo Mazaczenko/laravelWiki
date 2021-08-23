@@ -24,7 +24,14 @@ Route::get('/', function () {
 Route::get('users', [UserController::class, 'list'])
     ->name('get.users');
 
-Route::get('users/{id}', [ProfileController::class, 'show']);
+Route::get('users/test/{id}', [UserController::class, 'testShow'])
+    ->name('get.users.test');
+
+Route::post('users/test/post/{id}', [UserController::class, 'testStore'])
+    ->name('post.users.test.store');
+
+Route::get('users/{id}', [ProfileController::class, 'show'])
+    ->name('get.user.profile');
 
 // Single action controller
 Route::get('users/{id}/address', ShowAddress::class);

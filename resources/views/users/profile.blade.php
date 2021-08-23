@@ -2,9 +2,7 @@
     <div>
         <h1>Profile</h1>
         <ul>
-            <li>Tom</li>
-            <li>John</li>
-            <li>Paul</li>
+            <li>name: Tom</li>
         </ul>
     </div>
 </html>
